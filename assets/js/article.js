@@ -26,6 +26,7 @@ jQuery( document ).ready( function( $ ) {
                 nonce: $("input[name=generate_article_nonce]").val(),
                 title: txt,
                 nbrTokens: $('#nbrTokens').val(),
+                keyWords: $('#key-words').val(),
                 action: 'form_content_generator',
             }
         })

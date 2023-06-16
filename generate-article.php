@@ -112,10 +112,7 @@ add_action( 'wp_ajax_nopriv_form_content_generator', 'af_generate_article_form_c
 
 function af_generate_article_form_content_generator_response() {
     if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'generate_article_nonce')) {
-        $nbrTokens = absint($_POST['nbrTokens']);
-        $title = ($_POST['title']);
-
-        $url = "https://wp-ai-writter.com/api/send";
+        $url = "https://wp-genius-pen.com/api/send";
         $response = wp_remote_get($url, [
             'method'    => 'GET',
             'timeout'   => 30,
@@ -123,8 +120,9 @@ function af_generate_article_form_content_generator_response() {
             'body'      => [
                 'token'     => get_option('af_generate_article_token'),
                 'url'       => $_SERVER['SERVER_NAME'],
-                'title'     => $title,
-                'nbrTokens'   => $nbrTokens
+                'title'     => $_POST['title'],
+                'nbrTokens' => absint($_POST['nbrTokens']),
+	            'keyWords' => sanitize_text_field($_POST['keyWords'])
             ],
         ]);
 
