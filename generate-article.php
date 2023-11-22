@@ -75,7 +75,7 @@ function af_generate_article_token_verification_response() {
     if (isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'token_verification_nonce')) {
         $token = sanitize_text_field($_POST['token']);
 
-        $url = "https://wp-ai-writter.com/verification";
+        $url = "https://wp-genius-pen.com/verification";
         $response = wp_remote_post($url, [
             'method'    => 'POST',
             'timeout'   => 30,
